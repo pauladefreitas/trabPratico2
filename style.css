@@ -1,0 +1,20 @@
+  #logo {
+    width: 2.5rem;
+
+  }
+  
+  header {
+    background-position: center top;
+    background-image: url(https://s.zst.com.br/cms-assets/2021/09/qual-o-melhor-jogo-do-mundo-veja-lista-com-hits-e-sucessos.jpg);
+    background-blend-mode: exclusion;
+  }
+  
+  body {
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(57,121,122,1) 63%, rgba(244,242,242,1) 86%);
+    
+  }
+
+
+
+
