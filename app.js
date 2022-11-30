@@ -9,7 +9,6 @@ function detalhe (id) {
     let idx = data.results.findIndex (elem => elem.id == id);
     if (idx != -1) {
 
-    let games = data.results[idx];
 
     gamesDetalhe.innerHTML+= `
 

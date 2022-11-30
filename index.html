@@ -201,6 +201,7 @@
         <script src="scripts.js"></script>
 
         <script>
+
                 let search = document.getElementById('search');
                 let btnSearch = document.getElementById('btnSearch');
                 let resultados = document.getElementById('resultadosPesquisa');
@@ -212,22 +213,22 @@
 
                     fetch (url)
                         .then (res => res.json())
-                        .then (data => {console.log(data);
+                        .then (data => {
 
                             for (let i=0; i < 10; i++) {
                                 resultados.innerHTML+=`<div class="card mb-3">
 <br>
                             <img class="card-img-top" src="${data.results[i].background_image}"/>
-<div class="card-body">
-  <h2 class="card-title h4"><b>${data.results[i].name}</b></h2>
-  <p class="card-text"><b>Classificação Metacritic: </b>${data.results[i].metacritic}<br>
-  <b>Data de lançamento: </b>${data.results[i].released} <br>
-  <b>Avaliação: </b>${data.results[i].rating} 
-  </p>
+                            <div class="card-body">
+                                <h2 class="card-title h4"><b>${data.results[i].name}</b></h2>
+                                <p class="card-text"><b>Classificação Metacritic: </b>${data.results[i].metacritic}<br>
+                                <b>Data de lançamento: </b>${data.results[i].released} <br>
+                                <b>Avaliação: </b>${data.results[i].rating} 
+                                </p>
 
-  <a class="btn btn-primary" href="detalhes.html?id=${data.results[i].id}">Ler mais →</a>
-  <br>
-</div>`
+                            <a class="btn btn-primary" href="detalhes.html?id=${data.results[i].id}">Ler mais →</a>
+                        <br>
+                            </div>`
 
                             }
 

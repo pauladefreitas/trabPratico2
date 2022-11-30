@@ -17,7 +17,7 @@
         <!-- INÍCIO NAVBAR RESPONSIVA-->
         <nav id="NavLink" class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#!"><img id="logo" alt="Logo" src="imagens/img.png"></a>
+                <a class="navbar-brand"><img id="logo" alt="Logo" src="imagens/img.png"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -50,8 +50,8 @@
         <script>
             const urlParam = new URLSearchParams(location.search);
             let idGames = parseInt (urlParam.get('id'));
-            detalhe (idGames);
 
+            detalhe (idGames);
         </script>
     </body>
 </html>
