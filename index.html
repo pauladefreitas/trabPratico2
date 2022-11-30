@@ -143,8 +143,12 @@
                         <div class="card-header"><i class="fa-solid fa-magnifying-glass"></i>  Pesquisa</div>
                         <div class="card-body">
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Digite o termo de pesquisa..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button class="btn btn-dark" id="button-search" type="button"><a href="pesquisa.html" target="_blank" style="text-decoration:none">Ir!</a></button>
+                                <input class="form-control" type="text" id="search" placeholder="Digite o termo de pesquisa...">
+                                <button class="btn btn-dark" id="btnSearch" type="submit">Ir!</button>
+                            </div>
+
+                            <div id="resultadosPesquisa">
+
                             </div>
                         </div>
                     </div>
@@ -154,7 +158,7 @@
                     <div class="card mb-4" id="sobre">
                         <div class="card-header"><i class="fa-solid fa-folder"></i>  Sobre</div>
                         <div class="card-body"><p>Projetado pela aluna Paula de Freitas Camargos, do curso Ciência da Computação e matrícula 788521.</p>
-                        <p>Site dedicado a games feito para o segundo trabalho prático da Disciplina de Desenvolvimento de 
+                        <p>Site dedicado a games feito para o segundo trabalho prático da disciplina de Desenvolvimento de 
                             Interfaces Web da turma do segundo semestre de 2022.</p></div>
                     </div>
                     <!--FIM DO SOBRE-->
@@ -181,7 +185,7 @@
             <!-- FIM DO CONTEÚDO NAS LATERAIS-->
 
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-dark" type="button"><i class="fa-solid fa-arrow-up"></i> <a href="#NavLink" style="text-decoration:none">
+                <button class="btn btn-dark" type="submit"><i class="fa-solid fa-arrow-up"></i> <a href="#NavLink" style="text-decoration:none">
                     Voltar para o início</a></button>
             </div>
             <br>
@@ -195,5 +199,44 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="scripts.js"></script>
+
+        <script>
+                let search = document.getElementById('search');
+                let btnSearch = document.getElementById('btnSearch');
+                let resultados = document.getElementById('resultadosPesquisa');
+
+                function doSearch () {
+                    let textoPesquisa = search.value;
+                    
+                    let url = `https://api.rawg.io/api/games?key=faf5f98c2363424cb9782e3a65276837&search=${textoPesquisa}`
+
+                    fetch (url)
+                        .then (res => res.json())
+                        .then (data => {console.log(data);
+
+                            for (let i=0; i < 10; i++) {
+                                resultados.innerHTML+=`<div class="card mb-3">
+<br>
+                            <img class="card-img-top" src="${data.results[i].background_image}"/>
+<div class="card-body">
+  <h2 class="card-title h4"><b>${data.results[i].name}</b></h2>
+  <p class="card-text"><b>Classificação Metacritic: </b>${data.results[i].metacritic}<br>
+  <b>Data de lançamento: </b>${data.results[i].released} <br>
+  <b>Avaliação: </b>${data.results[i].rating} 
+  </p>
+
+  <a class="btn btn-primary" href="detalhes.html?id=${data.results[i].id}">Ler mais →</a>
+  <br>
+</div>`
+
+                            }
+
+
+                        })
+                }       
+
+            btnSearch.addEventListener ('click', doSearch);
+            
+        </script>
     </body>
 </html>

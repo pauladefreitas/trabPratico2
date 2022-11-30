@@ -31,7 +31,9 @@
         <!-- FIM NAVBAR RESPONSIVA-->
 
         <!--INÍCIO DO CONTEÚDO DA BARRA DE PESQUISA-->
+        <div id="resultadosPesquisa">
 
+        </div>
         <!--FIM DO CONTEÚDO DA BARRA DE PESQUISA-->
 
         <!--INÍCIO DO RODAPÉ-->
@@ -43,5 +45,32 @@
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="scripts.js"></script>
+        <script>
+                            let search = document.getElementById('search');
+                let btnSearch = document.getElementById('btnSearch');
+                let resultados = document.getElementById('resultadosPesquisa');
+
+                function doSearch () {
+                    let textoPesquisa = search.value;
+                    
+                    let url = `https://api.rawg.io/api/platforms?key=faf5f98c2363424cb9782e3a65276837&search=${textoPesquisa}`
+                    fetch (url)
+                        .then (res => res.json())
+                        .then (data => {
+                            let saida = ''
+
+                            for (let i=0; i < data.results.lenght; i++) {
+                                saida+=data.results[i].name + '<br>'
+
+                            }
+
+                            resultados.innerHTML = saida;
+                        })
+                }       
+
+                document.body.onload = () => {
+                btnSearch.addEventListener ('click', doSearch);
+                }
+        </script>
     </body>
 </html>
